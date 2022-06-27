@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+    {% load static%}
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Welcome to library!!</title>
+    <style>
+        body {
+            background-image: url('{% static "lb2.jpg"%}');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+      
+          }
+      
+          .table-fixed{
+            width: 100%;
+            background-color: #1c61a0;
+
+            tbody{
+              height:200px;
+              overflow-y:auto;
+              width: 100%;
+              }
+            thead,tbody,tr,td,th{
+              display:block;
+            }
+            tbody{
+              td{
+                float:center;
+
+              }
+            }
+            thead {
+              tr{
+                th{
+
+                float:center;
+                border-color:#e67e22;
+                }
+              }
+            }
+          }
+          
+          
+
+          #div2{
+            margin-top:5%;
+            opacity: 0.9;
+
+            
+          }
+          .button {
+            position: absolute;
+            top: 50%;
+            background-color: transparent;
+            border: none;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            outline: none;
+            font-size: 50px;
+            transition-duration: 0.4s;
+      
+        }
+        .button:hover {
+          background-color: white; /* Green */
+          color: Black;
+        }
+        .wrapper {
+            text-align: center;
+        }
+
+        a {
+            font-size: 25px;
+            font-color:white;
+        }
+
+          
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Library Management</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-nav">
+            <a href="#" class="nav-item nav-link">About Us</a>
+            <a href="#" class="nav-item nav-link">Contact Us</a>
+            <a href="{% url 'app1:login_view' %}" class="nav-item nav-link">Admin Login</a>
+  
+  
+        </div>
+  
+      </nav>
+      <div class="wrapper" id="div1">
+        <a class="button" onclick="myFunction()" ><u>Available Books</u></a>
+    </div>
+    <div class="container" id="div2" style="display:none;">
+        <table class="table table-fixed">
+          <thead>
+            <tr>
+              <th class="col-xs-3">BOOK Name</th>
+              <th class="col-xs-3">Author Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in books%}
+            <tr>
+              <td class="col-xs-3">{{i.0}}</td>
+              <td class="col-xs-3">{{i.1}}</td>
+            </tr>
+            {% endfor %}
+
+            
+          </tbody>
+        </table>
+        <a href = "{% url 'app1:home' %}">BACK</a>
+      </div>
+      <script>
+        function myFunction() { 
+          document.getElementById("div1").style.display="none"; 
+          document.getElementById("div2").style.display="block"; 
+        }
+
+        </script>
+      
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
